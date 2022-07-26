@@ -1,0 +1,58 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  scroll-behavior: smooth;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "SF Pro", "Roboto", "Arial", sans-serif;
+  font-size: 16px;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+img,
+svg {
+  display: block;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}

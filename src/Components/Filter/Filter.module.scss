@@ -1,0 +1,99 @@
+@import "../../Scss/Variables.scss";
+
+.filter {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 50%);
+  z-index: 9;
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter__list {
+  display: flex;
+  align-content: inherit;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background-color: $white;
+  border-radius: 10px 0 0 10px;
+}
+
+.filter__item {
+  position: relative;
+  flex-grow: 1;
+  padding: 25px 30px;
+
+  & + & {
+    border-left: 1px solid rgba($color: $black, $alpha: 0.2);
+  }
+
+  &:first-of-type {
+    padding-left: 57px;
+  }
+
+  &:last-of-type {
+    padding-right: 63px;
+  }
+}
+
+.filter__item__button {
+  display: flex;
+  align-items: center;
+  padding: 13px 10px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: $black;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  svg:first-child {
+    margin-right: 10px;
+    color: $lightBlue;
+  }
+
+  svg:last-child {
+    transition: transform 0.25s ease;
+  }
+
+  span {
+    margin-right: 10px;
+  }
+
+  &--open {
+    svg:last-child {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.filter__button {
+  padding: 38px 52px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: $white;
+  background-color: $lightBlue;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+.filter__item__inner {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}

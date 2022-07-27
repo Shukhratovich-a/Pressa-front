@@ -1,0 +1,19 @@
+@import "../../Scss/Variables.scss";
+
+.hero {
+  position: relative;
+  padding-top: 90px;
+  padding-bottom: 140px;
+  background: $blueGradient;
+}
+
+.hero__heading {
+  max-width: 840px;
+  width: 100%;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 79px;
+  text-align: center;
+  color: $white;
+}

@@ -1,7 +1,9 @@
+import Hero from "../../Components/Hero/Hero";
+
 const Home = () => {
   return (
     <main className="mian">
-      <section className="hero">hero</section>
+      <Hero />
     </main>
   );
 };

@@ -1,7 +1,78 @@
 @import "../../Scss/Variables.scss";
 
 .header {
+  padding: 22px 0;
   color: $white;
   background: $blueGradient;
+
+  nav{
+    margin-right: 63px;
+  }
 }
 
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.header__link {
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.header__form {
+  margin-right: 103px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.header__label {
+  width: 302px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.header__input {
+  flex-grow: 1;
+  padding: 0;
+  padding-left: 10px;
+  font-size: 14px;
+  line-height: 17px;
+  color: $white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: $white;
+  }
+}
+
+.header__nav__item {
+  & + & {
+    margin-left: 40px;
+  }
+}
+
+.header__button {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  text-decoration: none;
+  color: inherit;
+  background-color: $orange;
+  border-radius: 4px;
+
+  svg {
+    margin-right: 5px;
+  }
+}

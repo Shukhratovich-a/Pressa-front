@@ -35,11 +35,13 @@
   }
 
   &:first-of-type {
-    padding-left: 57px;
+    max-width: 300px;
+    width: 100%;
+    padding-left: 55px;
   }
 
   &:last-of-type {
-    padding-right: 63px;
+    padding-right: 60px;
   }
 }
 

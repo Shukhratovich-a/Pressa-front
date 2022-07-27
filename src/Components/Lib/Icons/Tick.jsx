@@ -1,8 +1,8 @@
-const Plus = () => {
+const Tick = () => {
   return (
-    <svg width={24} height={24} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+    <svg width={16} height={16} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
       <path
-        d="M10 5v5m0 0v5m0-5h5m-5 0H5"
+        d="M3.333 8.667 6 11.333l6.667-6.666"
         style={{
           fill: "none",
           stroke: "currentColor",
@@ -15,4 +15,4 @@ const Plus = () => {
   );
 };
 
-export default Plus;
+export default Tick;

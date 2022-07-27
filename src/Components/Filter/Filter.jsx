@@ -1,8 +1,10 @@
 import React from "react";
 
 import useCalendar from "../../Hooks/useCalendar";
+import useDirections from "../../Hooks/useDirections";
 
 import Calendar from "../Calendar/Calendar";
+import Directions from "../Directions/Directions";
 
 import CalendarIcon from "../Lib/Icons/Calendar";
 import DirectionIcon from "../Lib/Icons/Direction";
@@ -14,6 +16,7 @@ import styles from "./Filter.module.scss";
 
 const Filter = () => {
   const [date] = useCalendar();
+  const [directions] = useDirections();
 
   const normalizeDate = (date) => {
     const thisDate = new Date(date);
@@ -62,7 +65,6 @@ const Filter = () => {
 
   const openAndClose = (button) => {
     const name = button.name;
-    // button.classList.add(styles["filter__item__button--open"]);
 
     for (let key in states) {
       if (key === name) {
@@ -98,8 +100,14 @@ const Filter = () => {
     }
   };
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    console.log(date,directions);
+  };
+
   return (
-    <form className={styles.filter}>
+    <form className={styles.filter} onSubmit={handleSubmit}>
       <ul className={styles.filter__list}>
         <li className={`${styles.filter__item}`}>
           <button
@@ -131,7 +139,7 @@ const Filter = () => {
           </button>
 
           <div className={`${styles.filter__item__inner}`} ref={directionRef}>
-            {directionState ? <Calendar /> : null}
+            {directionState ? <Directions /> : null}
           </div>
         </li>
 

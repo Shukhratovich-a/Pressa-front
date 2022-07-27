@@ -1,0 +1,31 @@
+@import "../../Scss/Variables.scss";
+
+.footer {
+  color: $white;
+  background: $blueGradient;
+
+  .container{
+    display: flex;
+    align-items: center;
+  }
+
+  nav{
+    margin-right: 122px;
+  }
+}
+
+.footer__link {
+  display: block;
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  color: $white;
+  text-decoration: none;
+}
+
+.footer__nav__item {
+  & + & {
+    margin-left: 77px;
+  }
+}

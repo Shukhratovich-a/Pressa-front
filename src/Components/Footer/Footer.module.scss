@@ -1,15 +1,16 @@
 @import "../../Scss/Variables.scss";
 
 .footer {
+  padding: 40px 0;
   color: $white;
   background: $blueGradient;
 
-  .container{
+  .container {
     display: flex;
     align-items: center;
   }
 
-  nav{
+  nav {
     margin-right: 122px;
   }
 }
@@ -28,4 +29,37 @@
   & + & {
     margin-left: 77px;
   }
+}
+
+.footer__phone__link {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  line-height: 20px;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 70px;
+
+  svg {
+    margin-right: 10px;
+  }
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.footer__social {
+  & + & {
+    margin-left: 15px;
+  }
+}
+
+.footer__social__link{
+  display: block;
+  color: inherit;
 }

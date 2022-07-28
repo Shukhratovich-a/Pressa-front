@@ -1,0 +1,33 @@
+@import "../../../../Scss/Variables.scss";
+
+.radio {
+  &:checked + &--controller {
+    border-color: rgba($color: rgba(51, 51, 51, 0.7), $alpha: 0.4);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.radio--controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba($color: rgba(51, 51, 51, 0.7), $alpha: 0.5);
+  border-radius: 50%;
+  transition: border-color 0.25s ease;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: $lightBlue;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+}

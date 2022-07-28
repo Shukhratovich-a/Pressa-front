@@ -6,12 +6,16 @@
   background-color: $white;
   box-shadow: 2px 4px 11px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
+
+  &--loading {
+    padding: 20px;
+  }
 }
 
 .directions__list {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  column-gap: 60px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 60px;
   min-width: 380px;
   margin: 0;
   padding: 0;
@@ -29,7 +33,6 @@
 
 .direction__sublist {
   margin: 0;
-  margin-bottom: 20px;
   padding: 0;
   list-style-type: none;
 }
@@ -43,41 +46,12 @@
 .subdirection__label {
   display: flex;
   align-items: center;
-}
-
-.subdirection__input--controller {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  color: $white;
-  background-color: $white;
-  opacity: 0.5;
-  border: 1px solid #333333;
-  border-radius: 5px;
-  transition: border 0.25s ease,opacity 0.25s ease,background-color 0.25s ease;
-
-  svg {
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-}
-
-.subdirection__input:checked + .subdirection__input--controller{
-  background-color: $lightBlue;
-  opacity: 1;
-  border: 1px solid $lightBlue;
-  border-radius: 5px;
-
-  svg {
-    opacity: 1;
-  }
+  cursor: pointer;
 }
 
 .subdirection__title {
   margin: 0;
+  margin-left: 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

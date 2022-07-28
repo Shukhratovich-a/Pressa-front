@@ -1,6 +1,3 @@
-import Radio from "../../Components/Lib/Inputs/Radio/Radio";
-import CheckBox from "../../Components/Lib/Inputs/CheckBox/CheckBox";
-
 import styles from "./About.module.scss";
 
 const About = () => {

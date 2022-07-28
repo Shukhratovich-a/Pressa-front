@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Context } from "../Context/Type";
+import { Context } from "../Context/Types";
 
 const useType = () => {
   const ctx = React.useContext(Context);

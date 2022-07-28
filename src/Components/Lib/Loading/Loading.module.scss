@@ -10,17 +10,7 @@
 .loading-icon {
   transform: rotate(0deg);
   animation: spline 0.8s linear infinite;
-}
-
-#circle-1 {
-  stroke: $lightBlue;
-  opacity: 0.2;
-}
-
-#circle-2 {
-  stroke: $lightBlue;
-  stroke-dasharray: 80;
-  stroke-dashoffset: 60;
+  color: $lightBlue;
 }
 
 @keyframes spline {

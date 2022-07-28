@@ -1,4 +1,4 @@
-import useType from "../../Hooks/useType";
+import useTypes from "../../Hooks/useTypes";
 
 import Radio from "../Lib/Inputs/Radio/Radio";
 
@@ -8,7 +8,7 @@ import Offline from "../Lib/Icons/Offline";
 import styles from "./Types.module.scss";
 
 const Type = () => {
-  const [type, setType] = useType();
+  const [type, setType] = useTypes();
 
   const types = [
     { title: "online", icon: Online },

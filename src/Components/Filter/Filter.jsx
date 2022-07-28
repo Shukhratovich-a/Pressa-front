@@ -2,13 +2,15 @@ import React from "react";
 
 import useCalendar from "../../Hooks/useCalendar";
 import useDirections from "../../Hooks/useDirections";
+import useTypes from "../../Hooks/useTypes";
 
 import Calendar from "../Calendar/Calendar";
 import Directions from "../Directions/Directions";
+import Types from "../Types/Types";
 
 import CalendarIcon from "../Lib/Icons/Calendar";
 import DirectionIcon from "../Lib/Icons/Direction";
-import TypeIcon from "../Lib/Icons/Type";
+import OnlineIcon from "../Lib/Icons/Online";
 import NameIcon from "../Lib/Icons/Person";
 import Marker from "../Lib/Icons/Marker";
 
@@ -17,13 +19,14 @@ import styles from "./Filter.module.scss";
 const Filter = () => {
   const [date] = useCalendar();
   const [directions] = useDirections();
+  const [type] = useTypes();
 
   const normalizeDate = (date) => {
     const thisDate = new Date(date);
 
     const day = String(thisDate.getDate()).padStart(2, 0);
     const month = String(thisDate.getMonth() + 1).padStart(2, 0);
-    const year = thisDate.getFullYear();
+    const year = String(thisDate.getFullYear()).padStart(4, 0);
 
     return day + " / " + month + " / " + year;
   };
@@ -103,7 +106,7 @@ const Filter = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    console.log(date,directions);
+    console.log(date, directions, type);
   };
 
   return (
@@ -150,13 +153,13 @@ const Filter = () => {
             name="type"
             onClick={(evt) => openAndClose(evt.target.closest("button"))}
           >
-            <TypeIcon />
+            <OnlineIcon />
             <span>Online / Offline</span>
             <Marker />
           </button>
 
           <div className={`${styles.filter__item__inner}`} ref={typeRef}>
-            {typeState ? <Calendar /> : null}
+            {typeState ? <Types /> : null}
           </div>
         </li>
 

@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider as CalendarProvider } from "./Context/Calendar";
 import { Provider as DirectionsProvider } from "./Context/Directions";
 import { Provider as TypesProvider } from "./Context/Types";
+import { Provider as OrganizersProvider } from "./Context/Organizers";
 
 import App from "./App";
 
@@ -15,7 +16,9 @@ root.render(
       <CalendarProvider>
         <DirectionsProvider>
           <TypesProvider>
-            <App />
+            <OrganizersProvider>
+              <App />
+            </OrganizersProvider>
           </TypesProvider>
         </DirectionsProvider>
       </CalendarProvider>

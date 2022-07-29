@@ -3,10 +3,13 @@ import React from "react";
 import useCalendar from "../../Hooks/useCalendar";
 import useDirections from "../../Hooks/useDirections";
 import useTypes from "../../Hooks/useTypes";
+import useOrganizers from "../../Hooks/useOrganizers";
+import useDate from "../../Hooks/useDate";
 
 import Calendar from "../Calendar/Calendar";
 import Directions from "../Directions/Directions";
 import Types from "../Types/Types";
+import Organizers from "../Organizers/Organizers";
 
 import CalendarIcon from "../Lib/Icons/Calendar";
 import DirectionIcon from "../Lib/Icons/Direction";
@@ -20,16 +23,7 @@ const Filter = () => {
   const [date] = useCalendar();
   const [directions] = useDirections();
   const [type] = useTypes();
-
-  const normalizeDate = (date) => {
-    const thisDate = new Date(date);
-
-    const day = String(thisDate.getDate()).padStart(2, 0);
-    const month = String(thisDate.getMonth() + 1).padStart(2, 0);
-    const year = String(thisDate.getFullYear()).padStart(4, 0);
-
-    return day + " / " + month + " / " + year;
-  };
+  const [organizers] = useOrganizers();
 
   const [calendarState, setCalendarState] = React.useState(false);
   const calendarRef = React.useRef(null);
@@ -105,8 +99,20 @@ const Filter = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    const filtredDirections = [];
+    const filtredOrganizers = [];
 
-    console.log(date, directions, type);
+    directions.forEach((direction) => {
+      direction.subDirection.forEach((subDirection) => {
+        if (subDirection.isChecked) filtredDirections.push(subDirection.id);
+      });
+    });
+
+    organizers.forEach((organizer) => {
+      if (organizer.isChecked) filtredOrganizers.push(organizer.id);
+    });
+
+    console.log(date, filtredDirections, type, filtredOrganizers);
   };
 
   return (
@@ -120,7 +126,7 @@ const Filter = () => {
             onClick={(evt) => openAndClose(evt.target.closest("button"))}
           >
             <CalendarIcon />
-            <span>{normalizeDate(date)}</span>
+            <span>{useDate(date)}</span>
             <Marker />
           </button>
 
@@ -176,7 +182,7 @@ const Filter = () => {
           </button>
 
           <div className={`${styles.filter__item__inner}`} ref={nameRef}>
-            {nameState ? <Calendar /> : null}
+            {nameState ? <Organizers /> : null}
           </div>
         </li>
       </ul>

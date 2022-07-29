@@ -76,6 +76,12 @@ abbr[title] {
   line-height: 14px;
   color: #262d33;
   border-radius: 50%;
+
+  
+  abbr {
+    margin-top: 1px;
+    margin-left: 1px;
+  }
 }
 
 .react-calendar__tile:enabled:hover,

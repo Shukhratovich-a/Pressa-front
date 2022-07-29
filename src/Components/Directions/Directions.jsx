@@ -34,17 +34,18 @@ const Directions = () => {
       <ul className={`${styles.directions__list}`}>
         {directions.length > 0 &&
           directions.map((direction) => (
-            <li className={styles.direction} key={direction.title}>
+            <li className={styles.direction} key={direction.id}>
               <h3 className={styles.direction__heading}>{direction.title}</h3>
 
               <ul className={`${styles.direction__sublist}`}>
                 {direction.subDirection.length > 0 &&
                   direction.subDirection.map((subDirection) => (
-                    <li className={styles.subdirection} key={subDirection.title}>
+                    <li className={styles.subdirection} key={subDirection.id}>
                       <label className={styles.subdirection__label}>
                         <CheckBox
                           value={subDirection.title}
                           isChecked={subDirection.isChecked}
+                          name={'directions'}
                           onChange={(evt) => handleCheck(evt, direction.title, subDirection.title)}
                         />
                         <h4 className={styles.subdirection__title}>{subDirection.title}</h4>

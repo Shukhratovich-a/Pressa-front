@@ -5,6 +5,7 @@ import Header from "./Components/Header/Header";
 
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
+import Advertisement from "./Pages/Advertisement/Advertisement";
 
 import "./App.scss";
 
@@ -16,6 +17,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/advertisement" element={<Advertisement />} />
       </Routes>
 
       <Footer />

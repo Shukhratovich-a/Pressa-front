@@ -18,7 +18,7 @@ const Organizers = () => {
 
   const handleCheck = (evt, name) => {
     const array = [...organizers];
-    let organizer = array.find((item) => item.name == name);
+    let organizer = array.find((item) => item.name === name);
     organizer.isChecked = evt.target.checked;
 
     setOrganizers(array);

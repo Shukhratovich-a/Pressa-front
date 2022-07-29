@@ -6,8 +6,15 @@
   border-radius: 5px;
 }
 
+.post__wrapper{
+  background-color: $lightBlue;
+  border-radius: 5px 5px 0px 0px;
+
+}
+
 .post__image {
   border-radius: 5px 5px 0px 0px;
+  object-fit: cover;
 }
 
 .post__inner {
@@ -45,13 +52,17 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
+
+    &::first-letter{
+      text-transform: uppercase;
+    }
   }
 
   svg {
     flex-shrink: 0;
     color: $lightBlue;
     width: 22px;
-    height: 22px;
+    height: 100%;
     margin-right: 8px;
   }
 }

@@ -32,6 +32,7 @@ const Type = () => {
                   value={item.title}
                   isChecked={item.title === type ? true : false}
                   onChange={handleCheck}
+                  name="type"
                 />
               </label>
             </li>

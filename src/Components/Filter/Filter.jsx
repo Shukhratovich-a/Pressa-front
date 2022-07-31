@@ -20,7 +20,7 @@ import Marker from "../Lib/Icons/Marker";
 import styles from "./Filter.module.scss";
 
 const Filter = () => {
-  const [date] = useCalendar();
+  const [date, setDate] = useCalendar();
   const [directions] = useDirections();
   const [type] = useTypes();
   const [organizers] = useOrganizers();
@@ -131,7 +131,7 @@ const Filter = () => {
           </button>
 
           <div className={`${styles.filter__item__inner}`} ref={calendarRef}>
-            {calendarState ? <Calendar /> : null}
+            {calendarState ? <Calendar date={date} setDate={setDate} /> : null}
           </div>
         </li>
 

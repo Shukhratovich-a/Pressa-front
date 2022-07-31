@@ -10,7 +10,7 @@ const Hero = () => {
           Eng so’ngi master klasslar va tadbirlar bizning saytda
         </h1>
 
-        <Filter/>
+        <Filter />
       </div>
     </section>
   );

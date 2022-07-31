@@ -1,0 +1,31 @@
+@import "../../../../Scss/Variables.scss";
+
+.label {
+  max-width: 310px;
+  width: 100%;
+
+  &--disabled {
+    opacity: 0.5;
+  }
+}
+
+.text {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+.input {
+  display: block;
+  max-width: 310px;
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba($color: $black, $alpha: 0.1);
+  outline: none;
+}

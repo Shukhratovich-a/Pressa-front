@@ -1,0 +1,123 @@
+@import "../../../../Scss/Variables.scss";
+
+.upload {
+  max-width: 100%;
+  width: 100%;
+}
+
+.upload__inner {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.label {
+  max-width: 160px;
+  width: 100%;
+  margin-right: 41px;
+  transition: opacity 0.25s ease;
+  cursor: pointer;
+
+  &--disabled {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    .input {
+      background-color: $darkBlue;
+    }
+  }
+}
+
+.text {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+.input {
+  display: block;
+  max-width: 160px;
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  border-radius: 3px;
+  background-color: $lightBlue;
+  outline: none;
+  color: $white;
+  transition: background-color 0.15s ease;
+}
+
+.input__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-right: 5px;
+  }
+}
+
+.upload__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.upload__item {
+  position: relative;
+  display: block;
+  padding: 9px;
+
+  & + & {
+    margin-left: 22px;
+  }
+
+  &__button {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    padding: 3px;
+    border: none;
+    outline: none;
+    background-color: $lightBlue;
+    color: $white;
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  &__text {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &__status {
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    opacity: 0.4;
+  }
+
+  &:hover {
+    .upload__item__button {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.upload__article {
+  font-size: 12px;
+  line-height: 19px;
+  color: $lightBlue;
+}

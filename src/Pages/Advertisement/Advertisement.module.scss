@@ -1,0 +1,241 @@
+@import "../../Scss/Variables.scss";
+
+.advertisement {
+  padding-top: 50px;
+
+  .container {
+    max-width: 775px;
+  }
+}
+
+.advertisement__heading {
+  margin: 0;
+  margin-bottom: 35px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: $darkBlack;
+}
+
+.advertisement__inner {
+  padding: 40px 35px;
+  background: $white;
+  border: 1px solid rgba(51, 51, 51, 0.1);
+  border-radius: 2px;
+
+  & + & {
+    margin-top: 50px;
+  }
+}
+
+.advertisement__inner__heading {
+  margin: 0;
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: $darkBlack;
+}
+
+.advertisement__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 30px;
+}
+
+.advertisement__select__block {
+  max-width: 310px;
+  width: 100%;
+}
+
+.advertisement__select {
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: rgba($color: $black, $alpha: 0.1);
+  background-image: url("../../Assets/Icons/Marker.svg");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  appearance: none;
+  cursor: pointer;
+}
+
+.advertisement__aside {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.advertisement__label {
+  display: flex;
+  align-items: center;
+
+  & + & {
+    margin-left: 50px;
+  }
+
+  cursor: pointer;
+}
+
+.advertisement__label__text {
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.advertisement__post__heading {
+  width: 100%;
+  display: block;
+  margin-bottom: 50px;
+  font-family: "Bebas Neue";
+  font-size: 32px;
+  line-height: 42px;
+  color: $black;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: rgba($color: $black, $alpha: 0.2);
+  }
+}
+
+.advertisement__wrapper {
+  .advertisement__post__description {
+    max-width: 100%;
+
+    input {
+      max-width: 100%;
+    }
+  }
+}
+
+.advertisement__date {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  gap: 40px;
+}
+
+.advertisement__upload {
+  margin-bottom: 60px;
+}
+
+.advertisement__text--area {
+  margin-bottom: 50px;
+}
+
+.advertisement__button {
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  & + & {
+    margin-left: 15px;
+  }
+
+  &--reset {
+    max-width: 140px;
+    width: 100%;
+    background-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px rgba($color: $gray, $alpha: 0.4);
+    color: $gray;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: rgba($color: $gray, $alpha: 0.1);
+    }
+  }
+
+  &--submit {
+    max-width: 180px;
+    width: 100%;
+    background-color: $lightBlue;
+    color: $white;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: $darkBlue;
+    }
+  }
+}
+
+.advertisement__item {
+  position: relative;
+  flex-grow: 1;
+
+  &--calendar {
+    max-width: 171px;
+    width: 100%;
+
+    .advertisement__item__button {
+      justify-content: center;
+    }
+  }
+
+  &--time {
+    max-width: 140px;
+    width: 100%;
+  }
+}
+
+.advertisement__item__text {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+.advertisement__item__button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 13px 10px;
+  font-size: 14px;
+  line-height: 17px;
+  color: $black;
+  background-color: rgba($color: $black, $alpha: 0.1);
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+
+  svg:first-child {
+    margin-right: 10px;
+  }
+
+  svg:last-child {
+    transition: transform 0.25s ease;
+  }
+
+  span {
+    margin-right: 14px;
+  }
+
+  &--open {
+    svg:last-child {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.advertisement__item__inner {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 50%;
+  transform: translate(50%);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}

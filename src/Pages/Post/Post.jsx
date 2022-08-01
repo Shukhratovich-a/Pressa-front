@@ -27,8 +27,6 @@ const Post = () => {
     })();
   }, [conferenceId]);
 
-  console.log(post);
-
   return (
     <main>
       <section className={styles.post}>
@@ -62,6 +60,7 @@ const Post = () => {
                   <div className={styles.post__right__gallery}>
                     {post.post.post_images.map((image) => (
                       <img
+                        key={image}
                         className={styles.posr__right__image}
                         src={image}
                         alt=""
@@ -79,6 +78,13 @@ const Post = () => {
                     height={500}
                   />
                 )}
+
+                {post.post.post_bodys.length > 0 &&
+                  post.post.post_bodys.map((body, index) => (
+                    <p key={index} className={styles.post__right__description}>
+                      {body}
+                    </p>
+                  ))}
               </div>
             </div>
           </div>

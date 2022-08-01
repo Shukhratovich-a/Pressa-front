@@ -1,0 +1,25 @@
+.nav {
+  flex-grow: 1;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav__item {
+  & + & {
+    margin-top: 30px;
+  }
+}
+
+.nav__link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  color: inherit;
+}
+
+

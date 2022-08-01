@@ -9,6 +9,7 @@ import useDirections from "../../Hooks/useDirections";
 import useSocket from "../../Hooks/useSocket";
 
 import Calendar from "../../Components/Calendar/Calendar";
+import Times from "../../Components/Times/Times";
 
 import Radio from "../../Components/Lib/Inputs/Radio/Radio";
 import Tel from "../../Components/Lib/Inputs/Tel/Tel";
@@ -18,9 +19,9 @@ import TextArea from "../../Components/Lib/Inputs/TextArea/TextArea";
 
 import CalendarIcon from "../../Components/Lib/Icons/Calendar";
 import Marker from "../../Components/Lib/Icons/Marker";
+import Time from "../../Components/Lib/Icons/Time";
 
 import styles from "./Advertisement.module.scss";
-import Times from "../../Components/Times/Times";
 
 const Advertisement = () => {
   const socket = useSocket;
@@ -29,9 +30,7 @@ const Advertisement = () => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (!token) {
-      navigate("/login");
-    }
+    if (!token) navigate("/login");
   });
 
   const [isJuridical, setIsJuridica] = React.useState(true);
@@ -118,18 +117,16 @@ const Advertisement = () => {
       categories,
       subCategories,
       organizerType,
-      organiztionName,
+      organizationName,
       organizerName,
       organizerProfession,
       organizerPhone,
       organizerPhoneStuck,
       postName,
       postDescription,
-      // postFile,
       postBody,
+      postFile,
     } = evt.target.elements;
-
-    // console.log(organizerType);
 
     const bodys = postBody.value
       .trim()
@@ -148,14 +145,73 @@ const Advertisement = () => {
       return new Date(year, month, day, hour, minute, 0).getTime();
     };
 
+    if (!conferenceType.checked && conferenceLink.value.trim() === "") {
+      conferenceLink.focus();
+      conferenceLink.classList.add(styles["input--disabled"]);
+      return;
+    } else conferenceLink.classList.remove(styles["input--disabled"]);
+
+    if (organizerName.value.trim().length < 3) {
+      organizerName.focus();
+      organizerName.classList.add(styles["input--disabled"]);
+      return;
+    } else organizerName.classList.remove(styles["input--disabled"]);
+
+    if (organizerProfession.value.trim() === "") {
+      organizerProfession.focus();
+      organizerProfession.classList.add(styles["input--disabled"]);
+      return;
+    } else organizerProfession.classList.remove(styles["input--disabled"]);
+
+    if (organizerPhone.value.trim().length !== 17) {
+      organizerPhone.focus();
+      organizerPhone.classList.add(styles["input--disabled"]);
+      return;
+    } else organizerPhone.classList.remove(styles["input--disabled"]);
+
+    if (organizerPhoneStuck.value.trim().length !== 17) {
+      organizerPhoneStuck.focus();
+      organizerPhoneStuck.classList.add(styles["input--disabled"]);
+      return;
+    } else organizerPhoneStuck.classList.remove(styles["input--disabled"]);
+
+    if (organizerType.value.trim() === "yuridik" && organizationName.value.trim() === "") {
+      organizationName.focus();
+      organizationName.classList.add(styles["input--disabled"]);
+      return;
+    } else organizationName.classList.remove(styles["input--disabled"]);
+
+    if (postName.value.trim() === "" || postName.value.trim().length > 128) {
+      postName.focus();
+      return;
+    }
+
+    if (postDescription.value.trim() === "" || postDescription.value.trim().length > 512) {
+      postDescription.focus();
+      postDescription.classList.add(styles["input--disabled"]);
+      return;
+    } else postDescription.classList.remove(styles["input--disabled"]);
+
+    if (postBody.value.trim() === "") {
+      postBody.focus();
+      postBody.classList.add(styles["input--disabled"]);
+      return;
+    } else postBody.classList.remove(styles["input--disabled"]);
+
+    if (files.length === 0) {
+      postFile.focus();
+      postFile.classList.add(styles["input--disabled"]);
+      return;
+    } else postFile.classList.remove(styles["input--disabled"]);
+
     const model = {
       conferenceDate: normalizeDate(),
-      conferenceType: conferenceType.value.trim(),
+      conferenceType: conferenceType.checked ? "offline" : "online",
       categoryId: categories.value.trim(),
       subCategoryId: subCategories.value.trim(),
       conferenceLink: conferenceLink.value.trim(),
       organizer: {
-        organizationName: organiztionName.value.trim(),
+        organizationName: organizationName.value.trim(),
         organizerName: organizerName.value.trim(),
         organizerProfession: organizerProfession.value.trim(),
         organizerType: organizerType.value.trim(),
@@ -250,7 +306,7 @@ const Advertisement = () => {
                       name="time"
                       onClick={(evt) => openAndClose(evt.target.closest("button"))}
                     >
-                      <CalendarIcon />
+                      <Time />
                       <span>{time}</span>
                       <Marker />
                     </button>
@@ -297,15 +353,27 @@ const Advertisement = () => {
                   </select>
                 </div>
 
-                <div>
+                <label className={styles.advertisement__checkbox__label}>
+                  <span className={styles.advertisement__item__text}>Tadbir turi</span>
+
                   <input
-                    type="radio"
+                    className={`${styles.advertisement__checkbox} visually-hidden`}
+                    type="checkbox"
                     name="conferenceType"
                     value={"online"}
-                    defaultChecked={true}
+                    defaultChecked={false}
                   />
-                  <input type="radio" name="conferenceType" value={"offline"} />
-                </div>
+
+                  <span className={styles.advertisement__checkbox__controller}>
+                    <span className={styles.advertisement__checkbox__swiper}></span>
+                    <span className={styles.advertisement__checkbox__values} title={"online"}>
+                      Online
+                    </span>
+                    <span className={styles.advertisement__checkbox__values} title={"offline"}>
+                      Offline
+                    </span>
+                  </span>
+                </label>
 
                 <Text title={"Link kiriting"} name={"conferenceLink"} arialabel={"Link"} />
               </div>
@@ -342,7 +410,7 @@ const Advertisement = () => {
               <div className={styles.advertisement__wrapper}>
                 <Text
                   title={"Yuridik nomi"}
-                  name={"organiztionName"}
+                  name={"organizationName"}
                   isDisabled={isJuridical}
                   arialabel={"Yuridik nomi"}
                 />

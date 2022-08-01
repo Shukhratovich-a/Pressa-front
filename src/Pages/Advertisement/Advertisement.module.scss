@@ -176,10 +176,6 @@
   &--calendar {
     max-width: 171px;
     width: 100%;
-
-    .advertisement__item__button {
-      justify-content: center;
-    }
   }
 
   &--time {
@@ -199,6 +195,7 @@
 .advertisement__item__button {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 13px 10px;
   font-size: 14px;
@@ -238,4 +235,68 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
+}
+
+.advertisement__checkbox__label {
+  max-width: 310px;
+  width: 100%;
+  display: block;
+}
+
+.advertisement__checkbox__controller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgba($color: $black, $alpha: 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.advertisement__checkbox__values {
+  z-index: 9;
+  width: 155px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  transition: color 0.25s ease;
+
+  &[title="online"] {
+    color: $white;
+  }
+}
+
+.advertisement__checkbox__swiper {
+  position: absolute;
+  left: 0;
+  width: 155px;
+  height: 100%;
+  display: block;
+  background-color: $lightBlue;
+  border-radius: 3px;
+  transition: transform 0.25s ease;
+}
+
+.advertisement__checkbox:checked + .advertisement__checkbox__controller {
+  .advertisement__checkbox__values {
+    &[title="online"] {
+      color: $black;
+    }
+    &[title="offline"] {
+      color: $white;
+    }
+  }
+
+  .advertisement__checkbox__swiper {
+    transform: translate(100%);
+  }
+}
+
+.input--disabled {
+  box-shadow: 0px 0px 0px 1px $red;
+
+  &::placeholder {
+    color: $red;
+  }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+import { Provider as AdminTokenProvider } from "./Context/AdminToken";
 import { Provider as TokenProvider } from "./Context/Token";
 import { Provider as CalendarProvider } from "./Context/Calendar";
 import { Provider as DirectionsProvider } from "./Context/Directions";
@@ -14,17 +15,19 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <TokenProvider>
-        <CalendarProvider>
-          <DirectionsProvider>
-            <TypesProvider>
-              <OrganizersProvider>
-                <App />
-              </OrganizersProvider>
-            </TypesProvider>
-          </DirectionsProvider>
-        </CalendarProvider>
-      </TokenProvider>
+      <AdminTokenProvider>
+        <TokenProvider>
+          <CalendarProvider>
+            <DirectionsProvider>
+              <TypesProvider>
+                <OrganizersProvider>
+                  <App />
+                </OrganizersProvider>
+              </TypesProvider>
+            </DirectionsProvider>
+          </CalendarProvider>
+        </TokenProvider>
+      </AdminTokenProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,0 +1,29 @@
+@import "../../Scss/Variables.scss";
+
+.header {
+  display: flex;
+  flex-direction: column;
+  max-width: 180px;
+  width: 100%;
+  height: 100vh;
+  padding: 18px 30px;
+  color: $white;
+  background-color: #016bff;
+}
+
+.header__link {
+  display: block;
+  margin-bottom: 70px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__copyright {
+  display: block;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}

@@ -14,7 +14,6 @@ const TextArea = ({ className, name, title, isDisabled, arialabel }) => {
         placeholder={title}
         disabled={isDisabled}
         aria-label={arialabel}
-        required
       ></textarea>
     </label>
   );

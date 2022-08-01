@@ -48,7 +48,7 @@ const LastPosts = () => {
     socket.on("render post", (data) => {
       const array = [...posts];
       array.unshift(data.data);
-      setPosts(array.slice(0, count));
+      setPosts(array);
     });
   }, [posts]);
 

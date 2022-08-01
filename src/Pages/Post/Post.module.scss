@@ -1,0 +1,81 @@
+@import "../../Scss/Variables.scss";
+
+.post {
+  padding-top: 55px;
+
+  .container {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.post__left {
+  height: 435px;
+  max-width: 350px;
+  margin-right: 105px;
+  padding-top: 20px;
+  border-right: 4px solid rgba($color: $black, $alpha: 0.3);
+}
+
+.post__left__heading {
+  margin: 0;
+  margin-bottom: 35px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.post__left__params {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 40px;
+}
+
+.post__left__item {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  span::first-letter {
+    text-transform: uppercase;
+  }
+
+  svg {
+    color: $lightBlue;
+    margin-right: 10px;
+  }
+}
+
+.post__right{
+  max-width: 800px;
+}
+
+.post__right__heading {
+  max-width: 700px;
+  margin: 0;
+  margin-bottom: 46px;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 56px;
+}
+
+.post__right__description {
+  margin: 0;
+  max-width: 800px;
+  font-size: 24px;
+  line-height: 40px;
+
+  &:first-child{
+    margin-bottom: 14px;
+  }
+}
+
+.post__right__image {
+  max-width: 765px;
+  width: 100%;
+  margin-bottom: 40px;
+  max-height: 500px;
+  object-fit: cover;
+}

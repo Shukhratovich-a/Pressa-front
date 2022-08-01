@@ -1,6 +1,7 @@
 @import "../../Scss/Variables.scss";
 
 .advertisement {
+  margin-bottom: 130px;
   padding-top: 50px;
 
   .container {
@@ -166,6 +167,11 @@
     &:hover {
       background-color: $darkBlue;
     }
+  }
+
+  &__loading {
+    width: 16px;
+    color: $white;
   }
 }
 

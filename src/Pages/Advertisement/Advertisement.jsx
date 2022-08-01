@@ -17,6 +17,8 @@ import Text from "../../Components/Lib/Inputs/Text/Text";
 import File from "../../Components/Lib/Inputs/File/File";
 import TextArea from "../../Components/Lib/Inputs/TextArea/TextArea";
 
+import Loading from "../../Components/Lib/Loading/Loading";
+
 import CalendarIcon from "../../Components/Lib/Icons/Calendar";
 import Marker from "../../Components/Lib/Icons/Marker";
 import Time from "../../Components/Lib/Icons/Time";
@@ -36,7 +38,6 @@ const Advertisement = () => {
   const [isJuridical, setIsJuridica] = React.useState(true);
   const [date, setDate] = React.useState(new Date());
   const [time, setTime] = React.useState("13:00");
-  // const [isOnline, setIsOnline] = React.useState(true);
   const [files, setFiles] = React.useState([]);
 
   const [directions] = useDirections();
@@ -48,7 +49,7 @@ const Advertisement = () => {
   const [timeState, setTimeState] = React.useState(false);
   const timeRef = React.useRef(null);
 
-  // const [inputName, setInputName] = React.useState("");
+  const [buttonLoading, setButtonLoading] = React.useState(false);
 
   const states = {
     calendar: {
@@ -110,6 +111,8 @@ const Advertisement = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+
+    setButtonLoading(true);
 
     const {
       conferenceLink,
@@ -253,12 +256,18 @@ const Advertisement = () => {
 
       const dataImage = await responceImage.json();
 
-      data.data.post.post_images = dataImage.data.map((image) => image.post_image_link);
+      if (dataImage.status === 200) {
+        data.data.post.post_images = dataImage.data.map((image) => image.post_image_link);
 
-      socket.emit("new post", {
-        token: token,
-        message: data.data,
-      });
+        socket.emit("new post", {
+          token: token,
+          message: data.data,
+        });
+
+        evt.target.reset();
+        setButtonLoading(false);
+        setFiles([]);
+      }
     }
   };
 
@@ -473,8 +482,13 @@ const Advertisement = () => {
               <button
                 className={`${styles.advertisement__button} ${styles["advertisement__button--submit"]}`}
                 type={"submit"}
+                disabled={buttonLoading}
               >
-                E’lonni yuborish
+                {buttonLoading ? (
+                  <Loading className={styles["advertisement__button__loading"]} />
+                ) : (
+                  <span>E’lonni yuborish</span>
+                )}
               </button>
             </div>
           </form>

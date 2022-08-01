@@ -5,8 +5,11 @@ import Calendar from "../Lib/Icons/Calendar";
 import Online from "../Lib/Icons/Online";
 import Offline from "../Lib/Icons/Offline";
 import Time from "../Lib/Icons/Time";
+import Tv from "../Lib/Icons/Tv";
+import Shows from "../Lib/Icons/Shows";
 
 import styles from "./Post.module.scss";
+import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
   return (
@@ -22,7 +25,9 @@ const Post = ({ post }) => {
       </div>
 
       <div className={styles.post__inner}>
-        <h3 className={styles.post__heading}>{post.post.post_title}</h3>
+        <h3 className={styles.post__heading}>
+          <Link to={"/post/" + post.conference_id}>{post.post.post_title}x</Link>
+        </h3>
 
         <ul className={styles.post__list}>
           <li className={styles.post__item}>
@@ -30,6 +35,7 @@ const Post = ({ post }) => {
             <span>{post.organizer.organizer_name}</span>
           </li>
           <li className={styles.post__item}>
+            <Tv />
             <span>{post.organizer.organizer_profession}</span>
           </li>
           <li className={styles.post__item}>
@@ -45,6 +51,7 @@ const Post = ({ post }) => {
             <span>{post.conference_type}</span>
           </li>
           <li className={styles.post__item}>
+            <Shows />
             <span>2550</span>
           </li>
         </ul>

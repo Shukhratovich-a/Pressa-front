@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import io from "socket.io-client";
 
 import { HOST } from "../../config";
 
 import useToken from "../../Hooks/useToken";
 import useDate from "../../Hooks/useDate";
 import useDirections from "../../Hooks/useDirections";
+import useSocket from "../../Hooks/useSocket";
 
 import Calendar from "../../Components/Calendar/Calendar";
 
@@ -22,9 +22,9 @@ import Marker from "../../Components/Lib/Icons/Marker";
 import styles from "./Advertisement.module.scss";
 import Times from "../../Components/Times/Times";
 
-const socket = io(HOST, { transports: ["websocket", "polling"] });
-
 const Advertisement = () => {
+  const socket = useSocket;
+
   const [token] = useToken();
   const navigate = useNavigate();
 
@@ -197,11 +197,9 @@ const Advertisement = () => {
 
       const dataImage = await responceImage.json();
 
-      console.log(dataImage);
+      data.data.post.post_images = dataImage.data.map((image) => image.post_image_link);
 
-      evt.target.reset();
-
-      socket.emit("new message", {
+      socket.emit("new post", {
         token: token,
         message: data.data,
       });

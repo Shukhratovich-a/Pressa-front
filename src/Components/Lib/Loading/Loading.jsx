@@ -1,10 +1,10 @@
 import styles from "./Loading.module.scss";
 
-const Loading = () => {
+const Loading = ({ className }) => {
   return (
     <div className={styles.loading}>
       <svg
-        className={styles["loading-icon"]}
+        className={`${styles["loading-icon"]} ${className}`}
         width={24}
         height={24}
         xmlns="http://www.w3.org/2000/svg"

@@ -24,14 +24,28 @@
 }
 
 .last-posts__button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 180px;
+  width: 100%;
   margin: 0 auto;
   padding: 15px 20px;
   font-size: 18px;
-  line-height: 21px;
+  line-height: 24px;
   color: $white;
   border: none;
   border-radius: 5px;
   outline: none;
   background-color: $lightBlue;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $darkBlue;
+  }
+
+  &__loading {
+    width: 20px;
+    color: $white;
+  }
 }

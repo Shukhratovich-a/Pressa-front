@@ -1,3 +1,5 @@
+@import "../../Scss/Variables.scss";
+
 .posts {
   height: 100vh;
   overflow: auto;
@@ -46,7 +48,7 @@
   }
 }
 
-.posts__profile__avatar{
+.posts__profile__avatar {
   margin-right: 10px;
 }
 
@@ -68,6 +70,37 @@
   opacity: 0.3;
 }
 
+.posts__status__list {
+  margin-bottom: 30px;
+  padding: 30px 50px;
+  border-bottom: 1px solid #ccd7e0;
+}
+
+.posts__status__button {
+  padding: 15px 25px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+  color: #ffffff;
+  background-color: $lightBlue;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+
+  & + & {
+    margin-left: 15px;
+  }
+
+  &:hover {
+    background-color: $darkBlue;
+  }
+
+  &--active {
+    background-color: $darkBlue;
+  }
+}
+
 .posts__list {
   max-width: 870px;
   width: 100%;
@@ -75,10 +108,17 @@
   padding: 0;
   padding-left: 40px;
   list-style-type: none;
+
+  &--loading {
+    padding: 30px;
+  }
 }
 
-.posts__item {
-  & + & {
-    border-top: 1px solid #ccd7df;
-  }
+.posts__info {
+  display: block;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
 }

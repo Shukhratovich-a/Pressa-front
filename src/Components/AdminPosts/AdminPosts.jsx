@@ -10,13 +10,16 @@ import AdminPost from "../AdminPost/AdminPost";
 import Search from "../../Components/Lib/Icons/Search";
 import Avatar from "../../Components/Lib/Icons/Avatar";
 
+import Loading from "../Lib/Loading/Loading";
+
 import styles from "./AdminPosts.module.scss";
 
 const AdminPosts = () => {
+  const [loading, setLoading] = React.useState(true);
   const [posts, setPosts] = React.useState([]);
   const [admin, setAdmin] = React.useState({});
   const [token] = useAdminToken();
-  const [status] = React.useState("waiting");
+  const [status, setStatus] = React.useState("waiting");
   const socket = useSocket;
 
   React.useEffect(() => {
@@ -35,7 +38,14 @@ const AdminPosts = () => {
       const responce = await fetch(HOST + "/conferences?status=" + status + "&limit=1000");
       const data = await responce.json();
 
-      if (data.status === 200 && data.data.length > 0) setPosts(data.data);
+      if (data.status === 200 && data.data.length > 0) {
+        setPosts(data.data);
+        setLoading(false);
+      }
+      if (data.status === 404) {
+        setPosts([]);
+        setLoading(false);
+      }
     })();
   }, [status]);
 
@@ -65,6 +75,14 @@ const AdminPosts = () => {
     });
   });
 
+  const handleSetStatus = (evt) => {
+    if (evt.target.name !== status) {
+      setLoading(true);
+      setPosts([]);
+      setStatus(evt.target.name);
+    }
+  };
+
   const handleAccept = async (evt, post) => {
     const status = evt.target.name;
     const id = post.conference_id;
@@ -87,7 +105,6 @@ const AdminPosts = () => {
       const array = [...posts];
       array.splice(index, 1);
       setPosts(array);
-      console.log(data);
 
       socket.emit("accept post", {
         token: token,
@@ -158,7 +175,44 @@ const AdminPosts = () => {
         </div>
       </div>
 
-      <ul className={styles.posts__list}>
+      <div className={styles.posts__status__list}>
+        <button
+          className={`${styles.posts__status__button} ${
+            status === "waiting" ? styles["posts__status__button--active"] : ""
+          }`}
+          name="waiting"
+          onClick={handleSetStatus}
+        >
+          Kutilmoqda
+        </button>
+        <button
+          className={`${styles.posts__status__button} ${
+            status === "active" ? styles["posts__status__button--active"] : ""
+          }`}
+          name="active"
+          onClick={handleSetStatus}
+        >
+          Qabul qiligan
+        </button>
+        <button
+          className={`${styles.posts__status__button} ${
+            status === "disabled" ? styles["posts__status__button--active"] : ""
+          }`}
+          name="disabled"
+          onClick={handleSetStatus}
+        >
+          Rad etilgan
+        </button>
+      </div>
+
+      {!loading &&
+        (posts.length === 0 ? (
+          <span className={styles.posts__info}>Malumot yo'q</span>
+        ) : (
+          <span className={styles.posts__info}>Eng so’ngi xabarnomalar</span>
+        ))}
+
+      <ul className={`${styles.posts__list} ${loading ? styles["posts__list--loading"] : ""}`}>
         {posts.length > 0 &&
           posts.map((post) => (
             <li className={styles.posts__item} key={post.conference_id}>
@@ -169,6 +223,7 @@ const AdminPosts = () => {
               />
             </li>
           ))}
+        {loading ? <Loading className={styles.posts__loading} /> : null}
       </ul>
     </section>
   );

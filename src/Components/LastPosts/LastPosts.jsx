@@ -52,6 +52,15 @@ const LastPosts = () => {
     });
   }, [posts]);
 
+  React.useEffect(() => {
+    socket.on("delete post", (data) => {
+      const index = posts.findIndex((post) => post.conference_id === data.data.conference_id);
+      const array = [...posts];
+      array.splice(index, 1);
+      setPosts(array);
+    });
+  });
+
   return (
     <section className={styles["last-posts"]}>
       <div className={`container ${styles.container}`}>

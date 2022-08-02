@@ -21,22 +21,26 @@ const AdminPost = ({ post, handleAccept, handleDisebled }) => {
         <h3 className={styles.post__title}>{post.post.post_title}</h3>
 
         <div className={styles.post__buttons}>
-          <button
-            className={`${styles.post__button} ${styles["post__button--disabled"]}`}
-            name="disabled"
-            type="button"
-            onClick={handleDisebled}
-          >
-            Bekor qilish
-          </button>
-          <button
-            className={`${styles.post__button} ${styles["post__button--active"]}`}
-            name="active"
-            type="button"
-            onClick={handleAccept}
-          >
-            Tasdiqlash
-          </button>
+          {post.status !== "disabled" && (
+            <button
+              className={`${styles.post__button} ${styles["post__button--disabled"]}`}
+              name="disabled"
+              type="button"
+              onClick={handleDisebled}
+            >
+              Bekor qilish
+            </button>
+          )}
+          {post.status !== "active" && (
+            <button
+              className={`${styles.post__button} ${styles["post__button--active"]}`}
+              name="active"
+              type="button"
+              onClick={handleAccept}
+            >
+              Tasdiqlash
+            </button>
+          )}
         </div>
       </div>
 

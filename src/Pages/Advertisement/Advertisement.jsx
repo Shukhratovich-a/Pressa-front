@@ -268,6 +268,8 @@ const Advertisement = () => {
         evt.target.reset();
         setButtonLoading(false);
         setFiles([]);
+        setIsOnline(false);
+        setIsJuridica(true);
       }
     }
   };
@@ -482,7 +484,11 @@ const Advertisement = () => {
               <button
                 className={`${styles.advertisement__button} ${styles["advertisement__button--reset"]}`}
                 type={"reset"}
-                onClick={() => setFiles([])}
+                onClick={() => {
+                  setFiles([]);
+                  setIsOnline(false);
+                  setIsJuridica(true);
+                }}
               >
                 Bekor qilish
               </button>

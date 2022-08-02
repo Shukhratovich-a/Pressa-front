@@ -8,6 +8,8 @@ import Calendar from "../../Components/Lib/Icons/Calendar";
 import Time from "../../Components/Lib/Icons/Time";
 import Online from "../../Components/Lib/Icons/Online";
 import Offline from "../../Components/Lib/Icons/Offline";
+import Map from "../../Components/Lib/Icons/Map";
+import YouTube from "../../Components/Lib/Icons/YouTube";
 
 import Loading from "../../Components/Lib/Loading/Loading";
 
@@ -90,6 +92,17 @@ const Post = () => {
                       {body.post_body_text}
                     </p>
                   ))}
+              </div>
+
+              <div className={styles.post__bottom}>
+                <a href="#link">
+                  <Map />
+                  <span>Google kartadan aniqlash</span>
+                </a>
+                <a href="#link">
+                  <YouTube />
+                  <span>Youtubedan tomosha qilish</span>
+                </a>
               </div>
             </div>
           </div>

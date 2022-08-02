@@ -36,6 +36,7 @@ const Advertisement = () => {
   });
 
   const [isJuridical, setIsJuridica] = React.useState(true);
+  const [isOnline, setIsOnline] = React.useState(false);
   const [date, setDate] = React.useState(new Date());
   const [time, setTime] = React.useState("13:00");
   const [files, setFiles] = React.useState([]);
@@ -370,6 +371,7 @@ const Advertisement = () => {
                     type="checkbox"
                     name="conferenceType"
                     value={"online"}
+                    onChange={(evt) => setIsOnline(evt.target.checked)}
                     defaultChecked={false}
                   />
 
@@ -384,7 +386,12 @@ const Advertisement = () => {
                   </span>
                 </label>
 
-                <Text title={"Link kiriting"} name={"conferenceLink"} arialabel={"Link"} />
+                <Text
+                  title={"Link kiriting"}
+                  name={"conferenceLink"}
+                  arialabel={"Link"}
+                  isDisabled={isOnline}
+                />
               </div>
             </div>
 

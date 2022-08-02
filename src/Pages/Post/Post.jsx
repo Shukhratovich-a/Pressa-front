@@ -9,20 +9,25 @@ import Time from "../../Components/Lib/Icons/Time";
 import Online from "../../Components/Lib/Icons/Online";
 import Offline from "../../Components/Lib/Icons/Offline";
 
+import Loading from "../../Components/Lib/Loading/Loading";
+
 import styles from "./Post.module.scss";
 
 const Post = () => {
-  const { conferenceId } = useParams();
+  const [loading, setLoading] = React.useState(true);
   const [post, setPost] = React.useState();
+  const { conferenceId } = useParams();
   const nomalizeDate = useDate;
 
   React.useEffect(() => {
+    setLoading(true);
     (async () => {
       const responce = await fetch(HOST + "/conferences/" + conferenceId);
       const data = await responce.json();
 
       if (data.status === 200) {
         setPost(data.data[0]);
+        setLoading(false);
       }
     })();
   }, [conferenceId]);
@@ -61,7 +66,7 @@ const Post = () => {
                     {post.post.post_images.map((image) => (
                       <img
                         key={image}
-                        className={styles.posr__right__image}
+                        className={styles.post__right__image}
                         src={image}
                         alt=""
                         width={765}
@@ -80,15 +85,17 @@ const Post = () => {
                 )}
 
                 {post.post.post_bodys.length > 0 &&
-                  post.post.post_bodys.map((body, index) => (
-                    <p key={index} className={styles.post__right__description}>
-                      {body}
+                  post.post.post_bodys.map((body) => (
+                    <p key={body.post_body_id} className={styles.post__right__description}>
+                      {body.post_body_text}
                     </p>
                   ))}
               </div>
             </div>
           </div>
         )}
+
+        {loading && <Loading />}
       </section>
     </main>
   );

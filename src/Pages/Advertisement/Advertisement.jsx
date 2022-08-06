@@ -270,6 +270,8 @@ const Advertisement = () => {
         setFiles([]);
         setIsOnline(false);
         setIsJuridica(true);
+      } else {
+        setButtonLoading(false);
       }
     }
   };
